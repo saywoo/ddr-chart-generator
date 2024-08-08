@@ -28,6 +28,3 @@
 
     console.log(getSkillData);
 })
-
-
-javascript:(function(){var d=document;var url='https://saywoo.github.io/maimai-chart-generator/test.js';var e=d.createElement('script');e.src=url;d.getElementsByTagName('head')[0].appendChild(e);})()
