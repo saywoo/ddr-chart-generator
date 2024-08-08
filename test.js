@@ -29,5 +29,5 @@
 		return fetchHTML(url, BASE_URL + FLARE_SINGLE_PATH);
 	};
 
-    console.log(getSkillData);
+    console.log(getSingleData);
 })
