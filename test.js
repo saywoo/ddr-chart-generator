@@ -29,5 +29,6 @@
 		return fetchHTML(url, BASE_URL + FLARE_SINGLE_PATH);
 	};
 
-    console.log(getSingleData);
+    const dataPage = await getSingleData(BASE_URL + FLARE_SINGLE_PATH);
+    console.log(dataPage);
 })
