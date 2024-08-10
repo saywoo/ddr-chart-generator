@@ -4,18 +4,12 @@
     const FLARE_DOUBLE_PATH = "flare_data_double.html";
 	const LIMIT = 150;
 
-	const fetchHTML = async (url, referer_url) => {
-		const response = await fetch(url, {cache: "no-store", referrer: referer_url, credentials: "include"});
-		if (!response.ok) {
-			throw new Error(`Network response was not ok: ${response.statusText}`);
-		}
-
-        return new DOMParser().parseFromString(response.text(), "text/html");
+	const fetchHTML = async (url) => {
+        return new DOMParser().parseFromString(await (await fetch(url)).text(), "text/html");
 	};
 
 	const getSingleData = async (page) => {
-		const url = `${BASE_URL}${FLARE_SINGLE_PATH}`;
-		return fetchHTML(url, BASE_URL + FLARE_SINGLE_PATH);
+		return fetchHTML(page);
 	};
 
     const dataPage = await getSingleData(BASE_URL + FLARE_SINGLE_PATH);
