@@ -16,11 +16,15 @@
         let matches = dataPage.querySelectorAll(CATEGORY_TABLE[i]);
 
         for (let j = 0; j < matches.length; j++) {
-            let songInfo = matches[i].querySelectorAll("td");
+            let songInfo = matches[j].querySelectorAll("td");
 
-            console.log(songInfo[0].querySelector("img").src);
+            let songName = songInfo[0].querySelector("a").textContent;
+            let songImg = songInfo[0].querySelector("img").src;
+            songImg.replace(/kind=2/, "kind=1");
 
-            console.log(matches[i]);
+            console.log(songImg);
+
+            // console.log(matches[i]);
         }
     }
 
