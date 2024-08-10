@@ -9,5 +9,11 @@
 
     const dataPage = await getSingleData(BASE_URL + FLARE_SINGLE_PATH);
     console.log(dataPage);
+
+    let matches = dataPage.querySelectorAll(".flareskill_classic_table");
+
+    for (let i = 0; i < matches.length; i++) {
+        console.log(matches[i]);
+    }
 })();
 
