@@ -10,9 +10,7 @@
 			throw new Error(`Network response was not ok: ${response.statusText}`);
 		}
 
-        console.log(response);
-
-		return response.text();
+        return new DOMParser().parseFromString(response.text(), "text/html");
 	};
 
 	const getSingleData = async (page) => {
