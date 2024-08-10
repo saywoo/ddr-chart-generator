@@ -4,23 +4,12 @@
     const FLARE_DOUBLE_PATH = "flare_data_double.html";
 	const LIMIT = 150;
 
-	const data = {
-		profile: "",
-		skill_list: [],
-		musicdata_list: []
-	};
-
-	const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-	const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
-
 	const fetchHTML = async (url, referer_url) => {
 		const response = await fetch(url, {cache: "no-store", referrer: referer_url, credentials: "include"});
 		if (!response.ok) {
 			throw new Error(`Network response was not ok: ${response.statusText}`);
 		}
-        else {
-            console.log("OK");
-        }
+
 		return response.text();
 	};
 
