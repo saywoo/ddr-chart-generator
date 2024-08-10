@@ -10,7 +10,9 @@
 			throw new Error(`Network response was not ok: ${response.statusText}`);
 		}
 
-		return response.json();
+        console.log(response);
+
+		return response.text();
 	};
 
 	const getSingleData = async (page) => {
