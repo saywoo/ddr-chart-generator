@@ -4,6 +4,7 @@
     const FLARE_DOUBLE_PATH = "flare_data_double.html";
 
     const CATEGORY_TABLE = [".flareskill_classic_table", ".flareskill_white_table", ".flareskill_gold_table"];
+    const CATEGORY_NAME = ["classic", "white", "gold"];
 
 	async function fetchDoc(url) {
 		return new DOMParser().parseFromString(await (await fetch(url)).text(), "text/html");
@@ -15,16 +16,13 @@
         let matches = dataPage.querySelectorAll(CATEGORY_TABLE[i]);
 
         for (let j = 0; j < matches.length; j++) {
+            let songInfo = matches[i].querySelectorAll("td");
+
+            console.log(songInfo[0].querySelector("img").src);
+
             console.log(matches[i]);
         }
     }
 
-    let matches = dataPage.querySelectorAll(".flareskill_classic_table");
-
-    for (let i = 0; i < matches.length; i++) {
-        let songInfo = matches[i].querySelectorAll("td");
-
-        console.log(matches[i]);
-    }
 })();
 
