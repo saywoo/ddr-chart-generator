@@ -75,5 +75,10 @@
     }
     console.log(doubleSongList);
 
+    for (let i = 0; i < singleSongList[0].length; i++) {
+        let e = `<img src=${singleSongList[0][i]['img']}>`;
+        document.querySelector('footer').appendChild(e);
+    }
+
 })();
 
