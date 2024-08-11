@@ -16,7 +16,7 @@
     var singleSongList = [[], [], []];
     var doubleSongList = [[], [], []];
 
-    const dataPage = await fetchDoc(BASE_URL + FLARE_SINGLE_PATH);
+    var dataPage = await fetchDoc(BASE_URL + FLARE_SINGLE_PATH);
 
     for (let i = 0; i < CATEGORY_TABLE.length; i++) {
         let matches = dataPage.querySelectorAll(CATEGORY_TABLE[i]);
