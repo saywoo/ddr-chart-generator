@@ -19,8 +19,9 @@
             let songInfo = matches[j].querySelectorAll("td");
 
             let songName = songInfo[0].querySelector("a").textContent;
-            let songImg = songInfo[0].querySelector("img").src;
+
             // 작은 이미지에서 큰 이미지로 변경
+            let songImg = songInfo[0].querySelector("img").src;
             songImg = songImg.replace("kind=2", "kind=1");
 
             let tmp = songInfo[1].innerHTML.split("<br>");
@@ -30,13 +31,7 @@
             let songFlareLv = songInfo[2].querySelector("img").src;
             let songFlareSkill = songInfo[3].textContent;
 
-            // test
-            console.log(songName);
-            console.log(songImg);
-            console.log(songDiff);
-            console.log(songLv);
-            console.log(songFlareLv);
-            console.log(songFlareSkill);
+            
         }
     }
 
