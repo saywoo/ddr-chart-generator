@@ -27,7 +27,7 @@
 
             let songName = songInfo[0].querySelector("a").textContent;
 
-            if (songName.length >= MAX_NAME_LENGTH) {
+            if (songName.length > MAX_NAME_LENGTH) {
                 songName = songName.slice(0, MAX_NAME_LENGTH) + "...";
             }
 
@@ -46,7 +46,7 @@
     console.log(singleSongList);
 
 
-    dataPage = await fetchDoc(BASE_URL + FLARE_DOUBLE_PATH);
+    var dataPage = await fetchDoc(BASE_URL + FLARE_DOUBLE_PATH);
 
     for (let i = 0; i < CATEGORY_TABLE.length; i++) {
         let matches = dataPage.querySelectorAll(CATEGORY_TABLE[i]);
@@ -57,7 +57,7 @@
 
             let songName = songInfo[0].querySelector("a").textContent;
 
-            if (songName.length >= MAX_NAME_LENGTH) {
+            if (songName.length > MAX_NAME_LENGTH) {
                 songName = songName.slice(0, MAX_NAME_LENGTH) + "...";
             }
 
