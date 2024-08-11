@@ -26,8 +26,8 @@
 
             let songName = songInfo[0].querySelector("a").textContent;
 
-            if (songName.length < MAX_NAME_LENGTH) {
-                songName = songName.slice(0, MAX_NAME_LENGTH);
+            if (songName.length >= MAX_NAME_LENGTH) {
+                songName = songName.slice(0, MAX_NAME_LENGTH) + "...";
             }
 
             let songImg = songInfo[0].querySelector("img").src;
