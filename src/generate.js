@@ -21,7 +21,7 @@
         let matches = dataPage.querySelectorAll(CATEGORY_TABLE[i]);
 
         for (let j = 0; j < matches.length; j++) {
-            // 곡 정보를 파싱해서 저장
+            // 곡 정보를 파싱해서 songList에 저장
             let songInfo = matches[j].querySelectorAll("td");
 
             let songName = songInfo[0].querySelector("a").textContent;
@@ -39,13 +39,11 @@
             let songFlareLv = songInfo[2].querySelector("img").src;
             let songFlareSkill = songInfo[3].textContent;
 
-            console.log(songName);
-            console.log(songImg);
-            console.log(songDiff);
-            console.log(songFlareLv);
-            console.log(songFlareSkill);
+            songList[i].push({'name':songName, 'img':songImg, 'diff':songDiff, 'flareLv':songFlareLv, 'flareSkill':songFlareSkill});
         }
     }
+
+    console.log(songList);
 
 })();
 
