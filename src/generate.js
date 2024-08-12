@@ -76,7 +76,7 @@
     console.log(doubleSongList);
 
     for (let i = 0; i < singleSongList[0].length; i++) {
-        let e = document.createElement('img');
+        let e = document.createElement('div');
         e.innerHTML = `<img src=${singleSongList[0][i]['img']}>`;
         document.querySelector('footer').append(e);
     }
