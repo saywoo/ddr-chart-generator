@@ -84,7 +84,7 @@
             <h1 style="margin-top:80px; width: 98px; position: absolute; color: white; font-size: 20px; text-align: right; z-index: 11;">${singleSongList[0][i]['flareSkill']}</h1>
             <img style="position:absolute; margin-top: 70px; z-index: 11;" src="">
             <img class="song_img" style="position:absolute; width: 100px; height: 100px; filter: brightness(70%); z-index: 10;" 
-            src="${singleSongList[0][i]['img']}"
+            src=${singleSongList[0][i]['img']}
             >
         `;
         document.querySelector('footer').append(e);
