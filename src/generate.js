@@ -77,7 +77,16 @@
 
     for (let i = 0; i < singleSongList[0].length; i++) {
         let e = document.createElement('div');
-        e.innerHTML = `<img src=${singleSongList[0][i]['img']}>`;
+        e.style = "width: 100px; height: 100px; display: inline-block;";
+        e.innerHTML = `
+            <h1 style="margin-top:1px; margin-left: 1px; position: absolute; color: white; font-size: 15px;">${singleSongList[0][i]['name']}</h1>
+            <h1 style="margin-top:16px; margin-left: 1px; position: absolute; color: greenyellow; font-size: 15px;">${singleSongList[0][i]['diff']}</h1>
+            <h1 style="margin-top:80px; width: 98px; position: absolute; color: white; font-size: 20px; text-align: right;">${singleSongList[0][i]['flareSkill']}</h1>
+            <img style="position:absolute; margin-top: 70px;" src="">
+            <img class="song_img" style="position:absolute; width: 100px; height: 100px; filter: brightness(70%); z-index: -1;" 
+            src=${singleSongList[0][i]['img']}
+            >
+        `;
         document.querySelector('footer').append(e);
     }
 
