@@ -8,8 +8,6 @@
 
     // 각 난이도별 색깔
     const DIFF_COLOR = {"BEGINNER": "rgb(0, 255, 255)", "BASIC": "rgb(255, 255, 0)", "DIFFICULT": "rgb(255, 0, 0)", "EXPERT": "rgb(173, 255, 47)", "CHALLENGE": "rgb(238, 130, 238)"};
-    
-    const MAX_NAME_LENGTH = 9;
 
 	async function fetchDoc(url) {
 		return new DOMParser().parseFromString(await (await fetch(url)).text(), "text/html");
@@ -19,6 +17,7 @@
     var singleSongList = [[], [], []];
     var doubleSongList = [[], [], []];
 
+    // single 데이터 파싱
     var dataPage = await fetchDoc(BASE_URL + FLARE_SINGLE_PATH);
 
     for (let i = 0; i < CATEGORY_TABLE.length; i++) {
@@ -29,10 +28,6 @@
             let songInfo = matches[j].querySelectorAll("td");
 
             let songName = songInfo[0].querySelector("a").textContent;
-
-            if (songName.length > MAX_NAME_LENGTH) {
-                songName = songName.slice(0, MAX_NAME_LENGTH) + "...";
-            }
 
             let songImg = songInfo[0].querySelector("img").src;
             songImg = songImg.replace("kind=2", "kind=1");      // 작은 이미지에서 큰 이미지로 변경
@@ -51,6 +46,7 @@
     console.log(singleSongList);
 
 
+    // double 데이터 파싱
     var dataPage = await fetchDoc(BASE_URL + FLARE_DOUBLE_PATH);
 
     for (let i = 0; i < CATEGORY_TABLE.length; i++) {
@@ -61,10 +57,6 @@
             let songInfo = matches[j].querySelectorAll("td");
 
             let songName = songInfo[0].querySelector("a").textContent;
-
-            if (songName.length > MAX_NAME_LENGTH) {
-                songName = songName.slice(0, MAX_NAME_LENGTH) + "...";
-            }
 
             let songImg = songInfo[0].querySelector("img").src;
             songImg = songImg.replace("kind=2", "kind=1");                  // 작은 이미지에서 큰 이미지로 변경
@@ -82,12 +74,14 @@
     }
     console.log(doubleSongList);
 
+    const uiBase = document.body.appendChild(document.createElement("div"));
+
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < singleSongList[i].length; j++) {
             let e = document.createElement('div');
             e.style = "width: 100px; height: 100px; display: inline-block; margin-left:5px;";
             e.innerHTML = `
-                <h1 style="margin-top:0px; margin-left: 1px; position: absolute; color: white; font-size: 15px; z-index: 11;">${singleSongList[i][j]['name']}</h1>
+                <h1 style="margin-top:0px; margin-left: 1px; position: absolute; color: white; font-size: 15px; z-index: 11; width: 95px; text-overflow:ellipsis; white-space: nowrap; overflow: hidden;">${singleSongList[i][j]['name']}</h1>
                 <h1 style="margin-top:15px; margin-left: 1px; position: absolute; color: ${DIFF_COLOR[singleSongList[i][j]['diffName']]}; font-size: 15px; z-index: 11;">${singleSongList[i][j]['diff']}</h1>
                 <h1 style="margin-top:65px; width: 98px; position: absolute; color: white; font-size: 12px; text-align: right; z-index: 11;">#${j + 1}</h1>
                 <h1 style="margin-top:80px; width: 98px; position: absolute; color: white; font-size: 20px; text-align: right; z-index: 11;">${singleSongList[i][j]['flareSkill']}</h1>
@@ -96,7 +90,7 @@
                 src=${singleSongList[i][j]['img']}
                 >
             `;
-            document.querySelector('footer').append(e);
+            uiBase.append(e);
         }
 
         // 플레어 스킬곡 리스트를 다 안채웠을 떄 빈칸 매꿔주기
@@ -106,9 +100,7 @@
             e.innerHTML = `
                 <h1 style="margin-top:39px; margin-left:25px; position: absolute; color: white; font-size: 15px;">no data</h1>
             `;
-            document.querySelector('footer').append(e);
+            uiBase.append(e);
         }
     }
-
 })();
-
