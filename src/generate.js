@@ -6,7 +6,7 @@
     const CATEGORY_TABLE = [".flareskill_classic_table", ".flareskill_white_table", ".flareskill_gold_table"];
     const CATEGORY_NAME = ["classic", "white", "gold"];
     
-    const MAX_NAME_LENGTH = 8;
+    const MAX_NAME_LENGTH = 9;
 
 	async function fetchDoc(url) {
 		return new DOMParser().parseFromString(await (await fetch(url)).text(), "text/html");
@@ -62,12 +62,14 @@
             }
 
             let songImg = songInfo[0].querySelector("img").src;
-            songImg = songImg.replace("kind=2", "kind=1");      // 작은 이미지에서 큰 이미지로 변경
+            songImg = songImg.replace("kind=2", "kind=1");                  // 작은 이미지에서 큰 이미지로 변경
 
             let tmp = songInfo[1].innerHTML.split("<br>");
             let songDiff = tmp[0].slice(0, 1) + "SP " + tmp[1].slice(3);    // 'ESP 14' 형태로 가공
             
             let songFlareLv = songInfo[2].querySelector("img").src;
+            if (songFlareLv.includes("none") == true) songFlareLv = "";     // 플레어 게이지로 클리어하지 않았을 때
+
             let songFlareSkill = songInfo[3].textContent;
 
             doubleSongList[i].push({'name':songName, 'img':songImg, 'diff':songDiff, 'flareLv':songFlareLv, 'flareSkill':songFlareSkill});
@@ -75,19 +77,21 @@
     }
     console.log(doubleSongList);
 
-    for (let i = 0; i < singleSongList[0].length; i++) {
-        let e = document.createElement('div');
-        e.style = "width: 100px; height: 100px; display: inline-block;";
-        e.innerHTML = `
-            <h1 style="margin-top:1px; margin-left: 1px; position: absolute; color: white; font-size: 15px; z-index: 11;">${singleSongList[0][i]['name']}</h1>
-            <h1 style="margin-top:16px; margin-left: 1px; position: absolute; color: greenyellow; font-size: 15px; z-index: 11;">${singleSongList[0][i]['diff']}</h1>
-            <h1 style="margin-top:80px; width: 98px; position: absolute; color: white; font-size: 20px; text-align: right; z-index: 11;">${singleSongList[0][i]['flareSkill']}</h1>
-            <img style="position:absolute; margin-top: 70px; z-index: 11;" src="">
-            <img class="song_img" style="position:absolute; width: 100px; height: 100px; filter: brightness(70%); z-index: 10;" 
-            src=${singleSongList[0][i]['img']}
-            >
-        `;
-        document.querySelector('footer').append(e);
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < singleSongList[i].length; j++) {
+            let e = document.createElement('div');
+            e.style = "width: 100px; height: 100px; display: inline-block;";
+            e.innerHTML = `
+                <h1 style="margin-top:0px; margin-left: 1px; position: absolute; color: white; font-size: 15px; z-index: 11;">${singleSongList[i][j]['name']}</h1>
+                <h1 style="margin-top:15px; margin-left: 1px; position: absolute; color: greenyellow; font-size: 15px; z-index: 11;">${singleSongList[i][j]['diff']}</h1>
+                <h1 style="margin-top:80px; width: 98px; position: absolute; color: white; font-size: 20px; text-align: right; z-index: 11;">${singleSongList[i][j]['flareSkill']}</h1>
+                <img style="position:absolute; margin-top: 70px; z-index: 11;" src=${singleSongList[i][j]['flareLv']}>
+                <img class="song_img" style="position:absolute; width: 100px; height: 100px; filter: brightness(70%); z-index: 10;" 
+                src=${singleSongList[i][j]['img']}
+                >
+            `;
+            document.querySelector('footer').append(e);
+        }
     }
 
 })();
