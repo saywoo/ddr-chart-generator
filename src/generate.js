@@ -6,7 +6,7 @@
     const CATEGORY_TABLE = [".flareskill_classic_table", ".flareskill_white_table", ".flareskill_gold_table"];
     const CATEGORY_NAME = ["classic", "white", "gold"];
     
-    const MAX_NAME_LENGTH = 15;
+    const MAX_NAME_LENGTH = 8;
 
 	async function fetchDoc(url) {
 		return new DOMParser().parseFromString(await (await fetch(url)).text(), "text/html");
@@ -84,7 +84,7 @@
             <h1 style="margin-top:80px; width: 98px; position: absolute; color: white; font-size: 20px; text-align: right;">${singleSongList[0][i]['flareSkill']}</h1>
             <img style="position:absolute; margin-top: 70px;" src="">
             <img class="song_img" style="position:absolute; width: 100px; height: 100px; filter: brightness(70%); z-index: -1;" 
-            src=${singleSongList[0][i]['img']}
+            src="${singleSongList[0][i]['img']}"
             >
         `;
         document.querySelector('footer').append(e);
