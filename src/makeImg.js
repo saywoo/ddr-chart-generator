@@ -30,6 +30,8 @@ async function makeChart() {
 
     for (let i = readDataPos; i < readDataPos + CATEGORY_TABLE.length; i++) {
         const b = document.querySelector(`.${CHART_POSITION_NAME[i%CATEGORY_TABLE.length]}`);
+        b.replaceChildren();
+
         for (let j = 0; j < songList[i].length; j++) {
             let e = document.createElement('div');
             e.style = "width: 100px; height: 100px; display: inline-block; margin-left:5px;";
