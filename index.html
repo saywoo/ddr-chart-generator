@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="src/css/main.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDR chart generator</title>
+</head>
+<body>
+    <div class="main-container">
+        <h1>DDR chart generator</h1>
+        <p style="margin-top: -1.8%;">Ver 0.0</p>
+        <input type="file" id="dataLoad" accept=".json">
+        <br>
+        <select id="chartSelect">
+            <option value="single">single chart</option>
+            <option value="double">double chart</option>
+        </select>
+        <button onclick="makeChart()">차트 생성</button>
+    </div>
+    <div class="chart">
+        <div class="chart-classic">
+
+        </div>
+        <div class="chart-white">
+
+        </div>
+        <div class="chart-gold">
+
+        </div>
+    </div>
+    <script src="src/makeImg.js"></script>
+</body>
+</html>
