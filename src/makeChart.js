@@ -5,7 +5,6 @@ const CATEGORY_NAME = ["classic", "white", "gold"];
 // 각 난이도별 색깔
 const DIFF_COLOR = {"BEGINNER": "rgb(0, 255, 255)", "BASIC": "rgb(255, 255, 0)", "DIFFICULT": "rgb(255, 0, 0)", "EXPERT": "rgb(173, 255, 47)", "CHALLENGE": "rgb(238, 130, 238)"};
 
-
 let songList;
 
 document.getElementById("data-load").addEventListener("change", function (e) {
@@ -23,11 +22,19 @@ async function makeChart() {
     let sel = document.querySelector("#chart-select").value;
     if (sel == "single") readDataPos = 0;
     if (sel == "double") readDataPos = 3;
-    
+
+    // chart를 보이게 변경
+    document.querySelector(".chart").style = "display = block;";
 
     for (let i = readDataPos; i < readDataPos + CATEGORY_TABLE.length; i++) {
         const b = document.querySelector(`.${CHART_POSITION_NAME[i%CATEGORY_TABLE.length]}`);
         b.replaceChildren();
+        let e = document.createElement('div');
+        e.className = "chart-category";
+        e.innerHTML = `
+            <h1 class="chart-category-title">${CATEGORY_NAME[i%CATEGORY_TABLE.length]}</h1>
+        `;
+        b.append(e);
 
         for (let j = 0; j < songList[i].length; j++) {
             let e = document.createElement('div');
@@ -47,7 +54,7 @@ async function makeChart() {
         for (let j = songList[i].length; j < 30; j++) {
             let e = document.createElement('div');
             e.className = "chart-song-block";
-            e.style = "background-color: darkgray;";
+            e.style = "background-color: darkgray; z-index: 11;";
             e.innerHTML = `
                 <h1 class="chart-nodata">NO data</h1>
             `;

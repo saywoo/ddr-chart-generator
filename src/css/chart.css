@@ -1,7 +1,17 @@
 .chart {
     font-family: 'Pretendard';
     width: 1100px;
-    height: 1100px;
+    height: 1800px;
+    background-color: rgb(0, 222, 145);
+}
+.chart-classic {
+    margin-left: 20px;
+}
+.chart-white {
+    margin-left: 20px;
+}
+.chart-gold {
+    margin-left: 20px;
 }
 .chart-song-block {
     width: 100px; 
@@ -14,7 +24,7 @@
     margin-left: 1px;
     position: absolute; 
     color: white;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 15px;
     z-index: 11; 
     width: 95px;
@@ -24,7 +34,7 @@
     overflow: hidden;
 }
 .chart-song-diff {
-    font-weight: 400;
+    font-weight: 500;
     margin-top: 16px;
     margin-left: 1px; 
     position: absolute;
@@ -64,9 +74,53 @@
     z-index: 10;
 }
 .chart-nodata {
-    margin-top: 42px;
-    margin-left: 28px;
+    margin-top: 40px;
+    margin-left: 21px;
     position: absolute;
     color: white;
-    font-size: 12px;
+    font-size: 16px;
+}
+.chart-category {
+    margin-left: 6px;
+}
+.chart-category-title {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+.chart-top {
+    height: 440px;
+}
+.logo-img {
+    position: absolute;
+    width: 800px;
+    margin-top: -75px;
+    margin-left: 160px;
+    margin-bottom: 400px;
+    z-index: 11;
+}
+.logo-bg {
+    position: absolute;
+    width: 1100px;
+    z-index: 1;
+}
+.logo-char1 {
+    width: 600px;
+    position: absolute;
+    margin-left: 0px;
+    z-index: 2;
+}
+.logo-char2 {
+    width: 600px;
+    position: absolute;
+    margin-left: 500px;
+    z-index: 2;
+}
+.logo-bg-bottom {
+    position: absolute;
+    width: 1100px;
+    margin-top: 240px;
+    margin-left: 0px;
+    overflow: hidden;
+    z-index: 4;
 }

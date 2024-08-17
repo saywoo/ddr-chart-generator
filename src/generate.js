@@ -20,7 +20,7 @@
     // info 데이터 파싱
     var infoDataPage = await fetchDoc(BASE_URL + PROFILE_PATH);
 
-
+    // todo : info 데이터 파싱하기
 
     // single 데이터 파싱
     var singleDataPage = await fetchDoc(BASE_URL + FLARE_SINGLE_PATH);
