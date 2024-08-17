@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="src/css/main.css"/>
+    <link rel="stylesheet" href="src/css/chart.css"/>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DDR chart generator</title>
@@ -10,12 +12,13 @@
     <div class="main-container">
         <h1>DDR chart generator</h1>
         <p style="margin-top: -1.8%;">Ver 0.0</p>
-        <input type="file" id="dataLoad" accept=".json">
+        <input type="file" id="data-load" accept=".json">
         <br>
-        <select id="chartSelect">
+        <select id="chart-select">
             <option value="single">single chart</option>
             <option value="double">double chart</option>
         </select>
+        <script src="src/makeChart.js"></script>
         <button onclick="makeChart()">차트 생성</button>
     </div>
     <div class="chart">
@@ -29,6 +32,5 @@
 
         </div>
     </div>
-    <script src="src/makeImg.js"></script>
 </body>
 </html>

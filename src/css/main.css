@@ -4,16 +4,12 @@
     text-align: center;
 }
 
-#dataLoad {
+#data-load {
     margin-top: 5%; 
     margin-left: 10%;
 }
 
-#chartSelect {
+#chart-select {
     margin-top: 5%;
 }
 
-.chart {
-    width: 1100px;
-    height: 1100px;
-}
