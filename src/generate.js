@@ -21,6 +21,11 @@
     var infoDataPage = await fetchDoc(BASE_URL + PROFILE_PATH);
 
     // todo : info 데이터 파싱하기
+    let playerData = infoDataPage.querySelectorAll("td");
+
+    songList[6]["name"] = playerData[0].textContent;
+    songList[6]["ddrcode"] = playerData[1].textContent;
+    songList[6]["lastPlay"] = playerData[4].textContent.slice(0, 10);
 
     // single 데이터 파싱
     var singleDataPage = await fetchDoc(BASE_URL + FLARE_SINGLE_PATH);
