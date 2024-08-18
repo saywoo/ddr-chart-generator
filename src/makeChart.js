@@ -12,6 +12,7 @@ document.getElementById("data-load").addEventListener("change", function (e) {
     const reader = new FileReader();
     reader.addEventListener("load", function () {
         songList = JSON.parse(reader.result);
+        console.log(songList);
     });
     if (file) reader.readAsText(file);
 });
@@ -25,6 +26,12 @@ async function makeChart() {
 
     // chart를 보이게 변경
     document.querySelector(".chart").style = "display = block;";
+
+    // 유저 데이터를 차트에 표시
+    document.querySelector(".dancer-name").textContent = songList[6][0]["name"];
+    document.querySelector(".ddr-code").textContent = songList[6][0]["ddrcode"];
+    document.querySelector(".user-rating").textContent = songList[6][0][sel + "Rating"];
+    document.querySelector(".user-tier").textContent = songList[6][0][sel + "Tier"];
 
     for (let i = readDataPos; i < readDataPos + CATEGORY_TABLE.length; i++) {
         const b = document.querySelector(`.${CHART_POSITION_NAME[i%CATEGORY_TABLE.length]}`);

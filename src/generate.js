@@ -17,15 +17,33 @@
     // [ (single)classic, white, gold, (double)classic, white, gold, profileInfo ] 곡 리스트
     var songList = [[], [], [], [], [], [], []];
 
-    // info 데이터 파싱
-    var infoDataPage = await fetchDoc(BASE_URL + PROFILE_PATH);
+    // user 데이터 파싱
+    var playerDataPage = await fetchDoc(BASE_URL + PROFILE_PATH);
+    var playerDataMatch = playerDataPage.querySelectorAll("td");
+    var playerData = {};
 
-    // todo : info 데이터 파싱하기
-    let playerData = infoDataPage.querySelectorAll("td");
+    // 유저 데이터 파싱
+    playerData["name"] = playerDataMatch[0].textContent;
+    playerData["ddrcode"] = playerDataMatch[1].textContent;
+    playerData["lastPlay"] = playerDataMatch[4].textContent.slice(0, 10);
 
-    songList[6]["name"] = playerData[0].textContent;
-    songList[6]["ddrcode"] = playerData[1].textContent;
-    songList[6]["lastPlay"] = playerData[4].textContent.slice(0, 10);
+    playerData["singleTier"] = playerDataMatch[5].textContent;
+    playerData["doubleTier"] = playerDataMatch[6].textContent;
+    playerData["singleRating"] = playerDataMatch[7].textContent;
+    playerData["doubleRating"] = playerDataMatch[8].textContent;
+
+    // category별 레이팅 파싱
+    for (let i = 0; i < 3; i++) {
+        let tmp = playerDataMatch[i*2+9].textContent.split(" ");
+        playerData["single" + CATEGORY_NAME[i].charAt(0).toUpperCase() + CATEGORY_NAME[i].slice(1) + "Rating"] = tmp[0];
+        playerData["single" + CATEGORY_NAME[i].charAt(0).toUpperCase() + CATEGORY_NAME[i].slice(1) + "SongCount"] = tmp[1].slice(1);
+
+        tmp = playerDataMatch[i*2+10].textContent.split(" ");
+        playerData["double" + CATEGORY_NAME[i].charAt(0).toUpperCase() + CATEGORY_NAME[i].slice(1) + "Rating"] = tmp[0];
+        playerData["double" + CATEGORY_NAME[i].charAt(0).toUpperCase() + CATEGORY_NAME[i].slice(1) + "SongCount"] = tmp[1].slice(1);
+    }
+
+    songList[6].push(playerData);
 
     // single 데이터 파싱
     var singleDataPage = await fetchDoc(BASE_URL + FLARE_SINGLE_PATH);
