@@ -6,6 +6,8 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="src/js/html2canvas.js"></script>
     <title>DDR chart generator</title>
 </head>
 <body>
@@ -20,6 +22,7 @@
         </select>
         <script src="src/makeChart.js"></script>
         <button onclick="makeChart()">차트 생성</button>
+        <div style="height: 200px;"></div>
     </div>
     <div class="chart" style="display: none;">
         <div class="chart-top">
@@ -29,10 +32,22 @@
             <img class="logo-bg" src="src/img/ddr-bg.png">
             <img class="logo-bg-bottom" src="src/img/ddr-bg-bottom.png">
             <div class="user-data">
-                <h1 class="dancer-name"></h1>
-                <h1 class="ddr-code"></h1>
-                <h1 class="user-rating"></h1>
-                <h1 class="user-tier"></h1>
+                <div class="user-data-block">
+                    <p class="user-data-title">Dancer name</p>
+                    <p class="user-data-text dancer-name"></p>
+                </div>
+                <div class="user-data-block">
+                    <p class="user-data-title">DDR code</p>
+                    <p class="user-data-text ddr-code"></p>
+                </div>
+                <div class="user-data-block">
+                    <p class="user-data-title">rating</p>
+                    <p class="user-data-text user-rating"></p>
+                </div>
+                <div class="user-data-block">
+                    <p class="user-data-title">tier</p>
+                    <p class="user-data-text user-tier"></p>
+                </div>
             </div>
         </div>
 
